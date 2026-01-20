@@ -7,7 +7,6 @@ reviewers:
 - fsferraz-rh
 - annelson-rh
 - cjnovak98
-- MrSantamaria
 - PeterCSRE
 - digilink
 approvers:
@@ -19,7 +18,6 @@ approvers:
 - fsferraz-rh
 - annelson-rh
 - cjnovak98
-- MrSantamaria
 - PeterCSRE
 - digilink
 maintainers:
@@ -31,6 +29,5 @@ maintainers:
 - fsferraz-rh
 - annelson-rh
 - cjnovak98
-- MrSantamaria
 - PeterCSRE
 - digilink
