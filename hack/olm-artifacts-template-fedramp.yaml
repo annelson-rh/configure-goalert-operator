@@ -139,7 +139,7 @@ objects:
         name: goalert
         namespace: openshift-monitoring
       spec:
-        enablePrivateDNS: true
+        enablePrivateDns: true
         serviceName: ${GOALERT_VPCE_SERVICE_NAME_EAST}
         securityGroup:
           ingressRules:
@@ -181,7 +181,7 @@ objects:
         name: goalert
         namespace: openshift-monitoring
       spec:
-        enablePrivateDNS: true
+        enablePrivateDns: true
         serviceName: ${GOALERT_VPCE_SERVICE_NAME_WEST}
         securityGroup:
           ingressRules:
