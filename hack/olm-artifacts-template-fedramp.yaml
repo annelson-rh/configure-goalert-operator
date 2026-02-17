@@ -139,7 +139,7 @@ objects:
         name: goalert
         namespace: openshift-monitoring
       spec:
-        enablePrivateDNS: true
+        enablePrivateDns: true
         serviceName: ${GOALERT_VPCE_SERVICE_NAME_EAST}
         securityGroup:
           ingressRules:
@@ -181,7 +181,7 @@ objects:
         name: goalert
         namespace: openshift-monitoring
       spec:
-        enablePrivateDNS: true
+        enablePrivateDns: true
         serviceName: ${GOALERT_VPCE_SERVICE_NAME_WEST}
         securityGroup:
           ingressRules:
@@ -190,3 +190,39 @@ objects:
               protocol: tcp
         vpc:
           autoDiscoverSubnets: true
+- apiVersion: hive.openshift.io/v1
+  kind: SelectorSyncSet
+  metadata:
+    name: sss-fleet-avo-config
+  spec:
+    clusterDeploymentSelector:
+      matchExpressions:
+        - key: api.openshift.com/fedramp
+          operator: In
+          values:
+          - "true"
+        - key: api.openshift.com/private-link
+          operator: In
+          values:
+          - "true"
+        - key: ext-hypershift.openshift.io/cluster-type
+          operator: NotIn
+          values:
+            - "management-cluster"
+        - key: app-interface-managed
+          operator: NotIn
+          values: ["true"]
+    resourceApplyMode: Sync
+    applyBehavior: CreateOrUpdate
+    resources:
+      - kind: ConfigMap
+        apiVersion: v1
+        metadata:
+          name: avo-config
+          namespace: openshift-aws-vpce-operator
+        data:
+          avo_config.yaml: |-
+            apiVersion: avo.openshift.io/v1alpha1
+            kind: AvoConfig
+            enableVpcEndpointController: true
+            enablePrivateDns: true
