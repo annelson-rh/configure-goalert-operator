@@ -582,13 +582,4 @@ spec:
   - name: git-auth
     secret:
       secretName: build-pipeline-configure-goalert-operator-pko
-  pipelineRef:
-    resolver: git
-    params:
-    - name: url
-      value: https://github.com/openshift/boilerplate
-    - name: revision
-      value: master
-    - name: pathInRepo
-      value: pipelines/docker-build-oci-ta/pipeline.yaml
 status: {}
