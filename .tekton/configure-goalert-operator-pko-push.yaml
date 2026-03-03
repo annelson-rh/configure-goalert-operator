@@ -23,11 +23,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-<<<<<<< HEAD
     value: quay.io/redhat-user-workloads/fedramp-srep-tenant/configure-goalert-operator-pko:{{revision}}
-=======
-    value: quay.io/redhat-user-workloads/fedramp-srep-tenant/openshift/configure-goalert-operator-pko:{{revision}}
->>>>>>> 1cfd5bf (pko migration)
   - name: dockerfile
     value: build/Dockerfile.pko
   - name: path-context
