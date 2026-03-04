@@ -28,6 +28,8 @@ spec:
     value: build/Dockerfile.pko
   - name: path-context
     value: .
+  - name: skip-preflight-cert-check
+    value: true
   taskRunTemplate:
     serviceAccountName: build-pipeline-configure-goalert-operator-pko
   workspaces:
