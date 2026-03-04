@@ -581,5 +581,5 @@ spec:
   workspaces:
   - name: git-auth
     secret:
-      secretName: build-pipeline-configure-goalert-operator-pko
+      secretName: '{{ git_auth_secret }}'
 status: {}
