@@ -32,7 +32,7 @@ spec:
   - name: path-context
     value: deploy_pko
   - name: skip-preflight-cert-check
-    value: true
+    value: true
   taskRunTemplate:
     serviceAccountName: build-pipeline-configure-goalert-operator-pko
   workspaces:
