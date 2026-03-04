@@ -40,7 +40,7 @@ spec:
     - name: url
       value: https://github.com/openshift/boilerplate
     - name: revision
-      value: master
+      value: e9b1ea02f00771e24e6fc0629e0a0b7c00534750
     - name: pathInRepo
       value: pipelines/docker-build-oci-ta/pipeline.yaml
 status: {}
