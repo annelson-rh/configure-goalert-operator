@@ -32,6 +32,8 @@ rules:
     resources:
       - clusterserviceversions
       - subscriptions
+      - operatorgroup
+      - CatalogSource
     verbs:
       - list
       - get
