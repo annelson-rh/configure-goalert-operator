@@ -16,6 +16,7 @@ metadata:
   annotations:
     package-operator.run/phase: cleanup-rbac
     package-operator.run/collision-protection: IfNoController
+    package-operator.run/recreate: "True"
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -25,6 +26,7 @@ metadata:
   annotations:
     package-operator.run/phase: cleanup-rbac
     package-operator.run/collision-protection: IfNoController
+    package-operator.run/recreate: "True"
 rules:
   # CUSTOMIZE: Adjust permissions as needed for your cleanup tasks
   - apiGroups:
@@ -32,8 +34,8 @@ rules:
     resources:
       - clusterserviceversions
       - subscriptions
-      - operatorgroup
-      - CatalogSource
+      - operatorgroups
+      - catalogsources
     verbs:
       - list
       - get
@@ -48,6 +50,7 @@ metadata:
   annotations:
     package-operator.run/phase: cleanup-rbac
     package-operator.run/collision-protection: IfNoController
+    package-operator.run/recreate: "True"
 roleRef:
   kind: Role
   name: olm-cleanup
@@ -65,6 +68,7 @@ metadata:
   annotations:
     package-operator.run/phase: cleanup-deploy
     package-operator.run/collision-protection: IfNoController
+    package-operator.run/recreate: "True"
 spec:
   template:
     metadata:
@@ -86,18 +90,16 @@ spec:
               set -euxo pipefail
               # CUSTOMIZE: Update the label selector for your operator
               # Example pattern: operators.coreos.com/OPERATOR_NAME.NAMESPACE
-              oc -n configure-goalert-operator delete csv -l "operators.coreos.com/configure-goalert-operator.configure-goalert-operator" || true
+              oc -n configure-goalert-operator delete csv -l "operators.coreos.com/configure-goalert-operator.configure-goalert-operator" --ignore-not-found
               
               # CUSTOMIZE: Add any additional cleanup logic here
 
               # - Delete subscriptions
-              oc -n configure-goalert-operator delete Subscription configure-goalert-operator || true
+              oc -n configure-goalert-operator delete Subscription configure-goalert-operator --ignore-not-found
               # - Delete operator groups
-              oc -n configure-goalert-operator delete operatorgroup configure-goalert-operator-og  || true
+              oc -n configure-goalert-operator delete operatorgroup configure-goalert-operator-og --ignore-not-found
               # - Clean up CatalogSource
-              oc -n configure-goalert-operator delete CatalogSource configure-goalert-operator-catalog || true
-              
-              
+              oc -n configure-goalert-operator delete CatalogSource configure-goalert-operator-catalog --ignore-not-found  
           resources:
             requests:
               cpu: 100m
