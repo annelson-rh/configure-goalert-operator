@@ -53,7 +53,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: olm-cleanup
-    namespace: onfigure-goalert-operator
+    namespace: configure-goalert-operator
 ---
 apiVersion: batch/v1
 kind: Job
