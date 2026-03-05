@@ -6,10 +6,12 @@ metadata:
 parameters:
   - name: PKO_IMAGE
     required: true
+  - name: OPERATOR_IMAGE
+    required: true
   - name: IMAGE_DIGEST
     required: true
   - name: NAMESPACE
-    value: openshift-configure-goalert-operator
+    value: configure-goalert-operator
   - name: REPO_NAME
     value: configure-goalert-operator
     required: true
