@@ -87,10 +87,15 @@ spec:
               oc -n configure-goalert-operator delete csv -l "operators.coreos.com/configure-goalert-operator.configure-goalert-operator" || true
               
               # CUSTOMIZE: Add any additional cleanup logic here
-              # Examples:
+
               # - Delete subscriptions
+              oc -n configure-goalert-operator delete Subscription configure-goalert-operator
               # - Delete operator groups
+              oc -n configure-goalert-operator delete operatorgroup configure-goalert-operator-og  
               # - Clean up custom resources
+              oc -n configure-goalert-operator delete CatalogSource configure-goalert-operator-catalog
+              
+              
           resources:
             requests:
               cpu: 100m
